@@ -1,0 +1,122 @@
+#beef {
+    position:absolute;
+    top:150px;
+    left:30%;
+}
+
+
+#redwine {
+    position:absolute;
+    top:150px;
+    left:35%;
+}
+
+#whitewine {
+    position:absolute;
+    top:150px;
+    left:40%;
+}
+
+#potato {
+    position:absolute;
+    top:150px;
+    left:45%;
+}
+
+#tomato {
+    position:absolute;
+    top:150px;
+    left:50%;
+}
+
+#peanuts {
+    position:absolute;
+    top:150px;
+    left:55%;
+}
+
+#eggs {
+    position:absolute;
+    top:150px;
+    left:60%;
+}
+
+#milk {
+    position:absolute;
+    top:150px;
+    left:65%;
+}
+
+#flour {
+    position:absolute;
+    top:150px;
+    left:70%;
+}
+
+
+#beefHidden {
+    visibility:hidden;
+}
+
+
+#redwineHidden {
+    visibility:hidden;
+}
+
+#whitewineHidden {
+    visibility:hidden;
+}
+
+#potatoHidden {
+    visibility:hidden;
+}
+
+#tomatoHidden {
+    visibility:hidden;
+}
+
+#peanutsHidden {
+    visibility:hidden;
+}
+
+#eggsHidden {
+    visibility:hidden;
+}
+
+#milkHidden {
+    visibility:hidden;
+}
+
+#mildHidden {
+    visibility:hidden;
+}
+
+#pot {
+    position:absolute;
+    left:45%;
+    bottom:30%;
+    z-index:-1;
+    border-style:solid;
+}
+
+#cook {
+    font-size:30px;
+}
+
+#container {
+    width:800px;
+    margin:auto 0;
+    margin-left:30%;
+    margin-top:10%;
+}
+
+h1{
+    position:absolute;
+    left: 35%;
+}
+
+table {
+    position:absolute;
+    left: 50%;
+    bottom: 5%;
+}

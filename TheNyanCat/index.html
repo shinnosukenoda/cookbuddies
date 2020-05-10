@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="scripts/cookbuddies.css">
+        <script src="scripts/cookbuddies.js"></script>
+    </head>
+    <body>
+        <h1>Put place images inside the pot!(drag into the pot)</h1>
+
+        <!-- Foods block starts here-->
+        
+
+            <div id="beef" onmousemove='move(event, "beef")'>
+                    <img src="images/beef.png" width=50 height=50 alt="beef">
+            </div>
+
+            <div id="redwine" onmousemove='move(event, "redwine")'>
+                    <img src="images/redwine.png" width=50 height=50 alt="redwine">
+            </div>
+
+            <div id="whitewine" onmousemove='move(event, "whitewine")'>
+                    <img src="images/whitewine.png" width=50 height=50 alt="whitewine">
+            </div>
+
+            <div id="potato" onmousemove='move(event, "potato")'>
+                    <img src="images/potato.png" width=50 height=50 alt="potato">
+            </div>
+
+            <div id="tomato" onmousemove='move(event, "tomato")'>
+                    <img src="images/tomato.png" width=50 height=50 alt="tomato">
+            </div>
+
+            <div id="peanuts" onmousemove='move(event, "peanuts")'>
+                    <img src="images/peanuts.png" width=50 height=50 alt="peanuts">
+            </div>
+
+            <div id="eggs" onmousemove='move(event, "eggs")'>
+                    <img src="images/eggs.png" width=50 height=50 alt="eggs">
+            </div>
+
+            <div id="milk" onmousemove='move(event, "milk")'>
+                    <img src="images/milk.png" width=50 height=50 alt="milk">
+            </div>
+
+            <div id="flour" onmousemove='move(event, "flour")'>
+                    <img src="images/flour.png" width=50 height=50 alt="flour">
+            </div>
+
+        
+        <!-- Foods block ends here -->
+
+        <div id="pot">
+            <img src="images/pot.png" width=250 height=150>
+        </div>
+        
+
+        <form method="get" action="result.html">
+            <table>
+                <!--
+                    <tr>
+                        <td>
+                            Time: 
+                            <select>
+                                <option name="time" value="quick">Quick(Less than 30 mintes)</option>
+                                <option name="time" value="slow">Slow(More than 30 mintest)</option>
+                            </select>
+                        </td>
+                    </tr>
+                -->
+        
+                    <tr>
+                        <td>
+                            Allergy: <br>
+                            <input type="checkbox" name="allergyEgg" value="egg"> Egg<br>
+                            <input type="checkbox" name="allergyMilk" value="milk"> Milk<br>
+                            <input type="checkbox" name="allergyPeanut" value="peanut"> Peanut<br>
+                        </td>
+                    </tr>
+        
+                    <tr>
+                        <td>
+                            <input type="hidden" id="beefHidden" name="beefHidden" value="">
+                            <input type="hidden" id="eggsHidden" name="eggsHidden" value="">
+                            <input type="hidden" id="flourHidden" name="flourHidden" value="">
+                            <input type="hidden" id="milkHidden" name="milkHidden" value="">
+                            <input type="hidden" id="potatoHidden" name="potatoHidden" value="">
+                            <input type="hidden" id="redwineHidden" name="redwineHidden" value="">
+                            <input type="hidden" id="tomatoHidden" name="tomatoHidden" value="">
+                            <input type="hidden" id="whitewineHidden" name="whitewineHidden" value="">
+                            <input type="hidden" id="peanutsHidden" name="peanutsHidden" value="">
+
+                            <h3><input type="submit" value="cook" id="cook"  onclick="checkPlace()"></h3>
+                        </td>
+                    </tr>
+                </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="scripts/cookbuddies.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <div id="container">
+
+                <div id="result">
+                        <!--
+                        result:<br>
+                        -->
+                    </div>
+            
+                    <div id="question">
+                        question
+                    </div>
+            
+                    <script>
+                        printValues();
+            
+                        question = "";
+            
+                        function printValues() {
+                            var result = document.getElementById("result");
+                            var ingredients = ["beef", "eggs", "flour", "milk", "potato", "redwine", "tomato", "whitewine", "peanuts"];
+            
+                            var question = "What can I make with ";
+            
+                            for (var i = 0; i < ingredients.length; i++) {
+                                var food = getUrlParameter(ingredients[i] + "Hidden");
+            
+                                if (food != "") {
+            
+                                    /**
+                                    result.innerHTML += food + "<br>";
+                                    **/
+            
+                                    question += food + " ";
+                                }
+                            }
+            
+                            question += "?<br>";
+                            displayQuestion(question);
+                        }
+            
+                        function getUrlParameter(name) {
+                            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                            var results = regex.exec(location.search);
+                            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+                        };
+            
+                        function displayQuestion(question) {
+                            document.getElementById("question").innerHTML = "<h3>" + question + "</h3>";
+                        }
+            
+                        function getResults() {
+            
+                            var question = document.getElementById("question").innerHTML;
+            
+            
+                            getTokenString(question);
+            
+            
+                            function getTokenString() {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "https://api.genesysappliedresearch.com/v2/knowledge/generatetoken",
+                                    contentType : 'application/json',
+                                    headers: {
+                                        'organizationid' : '9589b7ca-3cee-4b6c-8088-bef97cabc603',
+                                        'secretkey' : 'e1a47fab-880b-40dc-9f73-958e55070129'
+                                    },
+                                    complete : function (data) {
+            
+                                        response = data.responseJSON.token;
+            
+                                        tokenString = response;
+            
+                                        clickButton(question, tokenString);
+                                    }
+                                });
+                            }
+            
+                            function clickButton(question, tokenString) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "https://api.genesysappliedresearch.com/v2/knowledge/knowledgebases/ab6cde90-42dc-4f55-bb1f-3f8f17ed00d0/search",
+                                    contentType : 'application/json',
+                                    headers: {
+                                        'organizationid' : '9589b7ca-3cee-4b6c-8088-bef97cabc603',
+                                        'token' : tokenString
+                                    },
+                                    data : JSON.stringify({
+                                        'query' : question,
+                                        'id' : 'ab6cde90-42dc-4f55-bb1f-3f8f17ed00d0',
+                                        'pageSize' : 5,
+                                        'pageNumber' : 1,
+                                        'sortOrder' : 'string',
+                                        'sortBy' : 'string',
+                                        'languageCode' : 'en-US',
+                                        'documentType' : 'Faq'
+                                    }),
+                                    complete : function (data) {
+            
+                                        response = data.responseJSON.results;
+                                        
+                                        var e = document.getElementById("answers");
+                                        for (var i = 0; i < response.length; i++) {
+                                            e.innerHTML += "<h2>" + response[i].faq.answer + "</h2>"
+                                        }
+                                    }
+                                });
+                            }
+                        }
+            
+                    </script>
+            
+                    <button onclick="getResults()">Display Answers From CookBuddies</button>
+            
+                    <div id="answers">
+            
+                    </div>
+
+        </div>
+    </body>
+</html>
